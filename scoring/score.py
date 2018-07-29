@@ -24,6 +24,10 @@ class Scorer(object):
             return backs, tokens + 1, score
 
         def can_down(backs, tokens, score):
+            if tokens == 0:
+                raise InvalidScoresheetException(
+                    "Cannot put down token -- not currently holding any tokens",
+                )
             return backs, tokens - 1, score
 
         event_handlers = {

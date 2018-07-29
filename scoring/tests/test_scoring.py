@@ -5,7 +5,7 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.insert(0, ROOT)
 
-from nose.tools import eq_
+from nose.tools import assert_raises, eq_
 
 from score import Scorer, InvalidScoresheetException
 
@@ -38,3 +38,19 @@ def check_scorer_result(test_vector, expected_score):
         Scorer.calculate_game_points(test_vector),
         expected_score,
     )
+
+
+TEST_INVALID = (
+    'D',
+    'UDD',
+)
+
+
+def test_scorer_rejects_impossible_event_sequences():
+    for test_vector in TEST_INVALID:
+        yield check_invalid, test_vector
+
+
+def check_invalid(test_vector):
+    with assert_raises(InvalidScoresheetException):
+        Scorer.calculate_game_points(test_vector)
