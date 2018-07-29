@@ -12,19 +12,19 @@ from score import Scorer, InvalidScoresheetException
 
 TESTS = (
     ('', 0),
-    ('U', 1),
-    ('C', 1),
+    ('U', 2),
+    ('C', 6),
     ('BC', 0),
-    ('BCC', 1),
+    ('BCC', 6),
     ('BBCC', 0),
-    ('BBCCC', 1),
-    ('BUC', 1),
+    ('BBCCC', 6),
+    ('BUC', 2),
     ('BUCD', 0),
-    ('BUCC', 3),
-    ('BUCCD', 2),
-    ('CB', 1),
-    ('CCB', 2),
-    ('UC BC BC BC BC', 3),
+    ('BUCC', 12),
+    ('BUCCD', 10),
+    ('CB', 6),
+    ('CCB', 12),
+    ('UC BC BC BC BC', 12),
 )
 
 
