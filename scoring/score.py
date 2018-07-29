@@ -42,6 +42,9 @@ class Scorer(object):
 
         backs, tokens, score = 0, 0, 0
         for event in events:
+            if event.isspace():
+                continue
+
             backs, tokens, score = event_handlers[event](backs, tokens, score)
 
         return score
