@@ -1,6 +1,7 @@
 CORNER_POINTS = 6
 CAN_CORNER_POINTS = 4
 CAN_END_POINTS = 2
+CANS_IN_ARENA = 7
 
 
 class InvalidScoresheetException(Exception):
@@ -40,6 +41,10 @@ class Scorer(object):
     @staticmethod
     def calculate_game_points(events, holding_super):
         def can_up(backs, cans, score):
+            if cans == CANS_IN_ARENA:
+                raise InvalidScoresheetException(
+                    "Cannot pick up can -- already holding all the cans",
+                )
             return backs, cans + 1, score
 
         def can_down(backs, cans, score):

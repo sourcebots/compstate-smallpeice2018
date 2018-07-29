@@ -43,6 +43,7 @@ def check_scorer_result(test_vector, expected_score):
 TEST_INVALID = (
     'D',
     'UDD',
+    'UUU UUU UU',
 )
 
 
