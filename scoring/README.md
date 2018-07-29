@@ -11,4 +11,5 @@ This must be done using the following notation:
 - `U` - the robot picked up a token
 - `D` - the robot dropped a token
 
-The scoring script in this repo can be used to convert a score sheet which conforms to the above notation into a scores for each of the competing teams.
+The scoring script in this repo can be used to convert a score sheet which
+conforms to the above notation into a scores for each of the competing teams.
