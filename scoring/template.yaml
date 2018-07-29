@@ -6,8 +6,10 @@ teams:
     disqualified: false
     present: true
     events: ''
+    holding-super: false
   TLA2:
     zone: 1
     disqualified: false
     present: true
     events: ''
+    holding-super: false

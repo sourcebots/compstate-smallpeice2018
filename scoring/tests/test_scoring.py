@@ -35,7 +35,7 @@ def test_scorer_produces_scores_matching_test_vectors():
 
 def check_scorer_result(test_vector, expected_score):
     eq_(
-        Scorer.calculate_game_points(test_vector),
+        Scorer.calculate_game_points(test_vector, False),
         expected_score,
     )
 
@@ -53,4 +53,44 @@ def test_scorer_rejects_impossible_event_sequences():
 
 def check_invalid(test_vector):
     with assert_raises(InvalidScoresheetException):
-        Scorer.calculate_game_points(test_vector)
+        Scorer.calculate_game_points(test_vector, False)
+
+
+def test_invalid_when_holding_super_but_no_tokens():
+    with assert_raises(InvalidScoresheetException):
+        Scorer.calculate_game_points('BUCD', True)
+
+
+def test_noone_has_super_token():
+    scores = Scorer({
+        'ABC': {'events': 'C'},
+        'DEF': {'events': 'C'},
+    }, None).calculate_scores()
+
+    eq_(scores, {'ABC': 6, 'DEF': 6})
+
+
+def test_first_has_super_token():
+    scores = Scorer({
+        'ABC': {'events': 'CU', 'holding-super': True},
+        'DEF': {'events': 'CU', 'holding-super': False},
+    }, None).calculate_scores()
+
+    eq_(scores, {'ABC': 8, 'DEF': 4})
+
+
+def test_second_has_super_token():
+    scores = Scorer({
+        'ABC': {'events': 'CU', 'holding-super': False},
+        'DEF': {'events': 'CU', 'holding-super': True},
+    }, None).calculate_scores()
+
+    eq_(scores, {'ABC': 4, 'DEF': 8})
+
+
+def test_both_have_super_token():
+    with assert_raises(InvalidScoresheetException):
+        Scorer({
+            'ABC': {'events': 'CU', 'holding-super': True},
+            'DEF': {'events': 'CU', 'holding-super': True},
+        }, None).calculate_scores()
