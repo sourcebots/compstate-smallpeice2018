@@ -56,12 +56,12 @@ def check_invalid(test_vector):
         Scorer.calculate_game_points(test_vector, False)
 
 
-def test_invalid_when_holding_super_but_no_tokens():
+def test_invalid_when_holding_super_but_no_cans():
     with assert_raises(InvalidScoresheetException):
         Scorer.calculate_game_points('BUCD', True)
 
 
-def test_noone_has_super_token():
+def test_noone_has_super_can():
     scores = Scorer({
         'ABC': {'events': 'C'},
         'DEF': {'events': 'C'},
@@ -70,7 +70,7 @@ def test_noone_has_super_token():
     eq_(scores, {'ABC': 6, 'DEF': 6})
 
 
-def test_first_has_super_token():
+def test_first_has_super_can():
     scores = Scorer({
         'ABC': {'events': 'CU', 'holding-super': True},
         'DEF': {'events': 'CU', 'holding-super': False},
@@ -79,7 +79,7 @@ def test_first_has_super_token():
     eq_(scores, {'ABC': 8, 'DEF': 4})
 
 
-def test_second_has_super_token():
+def test_second_has_super_can():
     scores = Scorer({
         'ABC': {'events': 'CU', 'holding-super': False},
         'DEF': {'events': 'CU', 'holding-super': True},
@@ -88,7 +88,7 @@ def test_second_has_super_token():
     eq_(scores, {'ABC': 4, 'DEF': 8})
 
 
-def test_both_have_super_token():
+def test_both_have_super_can():
     with assert_raises(InvalidScoresheetException):
         Scorer({
             'ABC': {'events': 'CU', 'holding-super': True},

@@ -1,6 +1,6 @@
 CORNER_POINTS = 6
-TOKEN_CORNER_POINTS = 4
-TOKEN_END_POINTS = 2
+CAN_CORNER_POINTS = 4
+CAN_END_POINTS = 2
 
 
 class InvalidScoresheetException(Exception):
@@ -23,7 +23,7 @@ class Scorer(object):
             if info.get('holding-super'):
                 if tla_holding_super is not None:
                     raise InvalidScoresheetException(
-                        "Only one team can be holding the super token at the end",
+                        "Only one team can be holding the super can at the end",
                     )
                 tla_holding_super = tla
 
@@ -39,40 +39,40 @@ class Scorer(object):
 
     @staticmethod
     def calculate_game_points(events, holding_super):
-        def can_up(backs, tokens, score):
-            return backs, tokens + 1, score
+        def can_up(backs, cans, score):
+            return backs, cans + 1, score
 
-        def can_down(backs, tokens, score):
-            if tokens == 0:
+        def can_down(backs, cans, score):
+            if cans == 0:
                 raise InvalidScoresheetException(
-                    "Cannot put down token -- not currently holding any tokens",
+                    "Cannot put down can -- not currently holding any cans",
                 )
-            return backs, tokens - 1, score
+            return backs, cans - 1, score
 
         event_handlers = {
-            'b': lambda backs, tokens, score: (backs + 1, tokens, score),
-            'c': lambda backs, tokens, score:
-                (0, tokens, score + CORNER_POINTS + (tokens * TOKEN_CORNER_POINTS))
+            'b': lambda backs, cans, score: (backs + 1, cans, score),
+            'c': lambda backs, cans, score:
+                (0, cans, score + CORNER_POINTS + (cans * CAN_CORNER_POINTS))
                 if backs == 0
-                else (backs - 1, tokens, score),
+                else (backs - 1, cans, score),
             'u': can_up,
             'd': can_down,
-            'END': lambda backs, tokens, score:
-                (backs, tokens, score + (tokens * TOKEN_END_POINTS)),
+            'END': lambda backs, cans, score:
+                (backs, cans, score + (cans * CAN_END_POINTS)),
         }
 
         events = list(events.lower()) + ['END']
 
-        backs, tokens, score = 0, 0, 0
+        backs, cans, score = 0, 0, 0
         for event in events:
             if event.isspace():
                 continue
 
-            backs, tokens, score = event_handlers[event](backs, tokens, score)
+            backs, cans, score = event_handlers[event](backs, cans, score)
 
-        if holding_super and tokens == 0:
+        if holding_super and cans == 0:
             raise InvalidScoresheetException(
-                "Cannot be holding the super token -- not holding any tokens at the end",
+                "Cannot be holding the super can -- not holding any cans at the end",
             )
 
         return score

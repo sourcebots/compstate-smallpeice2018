@@ -8,8 +8,8 @@ This must be done using the following notation:
 - `C` - the robot passed a track boundary in the anticlockwise direction
 - `B` - the robot passed a track boundary in the clockwise direction
 
-- `U` - the robot picked up a token
-- `D` - the robot dropped a token
+- `U` - the robot picked up a can (including the super can)
+- `D` - the robot dropped a can (including the super can)
 
 The scoring script in this repo can be used to convert a score sheet which
 conforms to the above notation into a scores for each of the competing teams.
