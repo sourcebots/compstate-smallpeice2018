@@ -44,6 +44,7 @@ TEST_INVALID = (
     'D',
     'UDD',
     'UUU UUU UU',
+    'UUU UUDD UUU UU',
 )
 
 
