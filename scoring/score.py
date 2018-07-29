@@ -15,14 +15,20 @@ class Scorer(object):
 
     @staticmethod
     def calculate_game_points(events):
+        def can_up(backs, tokens, score):
+            return backs, tokens + 1, score
+
+        def can_down(backs, tokens, score):
+            return backs, tokens - 1, score
+
         event_handlers = {
             'b': lambda backs, tokens, score: (backs + 1, tokens, score),
             'c': lambda backs, tokens, score:
                 (0, tokens, score + 1 + tokens)
                 if backs == 0
                 else (backs - 1, tokens, score),
-            'u': lambda backs, tokens, score: (backs, tokens + 1, score),
-            'd': lambda backs, tokens, score: (backs, tokens - 1, score),
+            'u': can_up,
+            'd': can_down,
             'END': lambda backs, tokens, score: (backs, tokens, score + tokens),
         }
 
