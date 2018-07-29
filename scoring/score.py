@@ -1,3 +1,8 @@
+CORNER_POINTS = 1
+TOKEN_CORNER_POINTS = 1
+TOKEN_END_POINTS = 1
+
+
 class InvalidScoresheetException(Exception):
     pass
 
@@ -24,12 +29,13 @@ class Scorer(object):
         event_handlers = {
             'b': lambda backs, tokens, score: (backs + 1, tokens, score),
             'c': lambda backs, tokens, score:
-                (0, tokens, score + 1 + tokens)
+                (0, tokens, score + CORNER_POINTS + (tokens * TOKEN_CORNER_POINTS))
                 if backs == 0
                 else (backs - 1, tokens, score),
             'u': can_up,
             'd': can_down,
-            'END': lambda backs, tokens, score: (backs, tokens, score + tokens),
+            'END': lambda backs, tokens, score:
+                (backs, tokens, score + (tokens * TOKEN_END_POINTS)),
         }
 
         events = list(events.lower()) + ['END']
