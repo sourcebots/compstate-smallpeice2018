@@ -3,7 +3,7 @@ teams:
     name: Team 1
     rookie: true
   T02:
-    name: Team 2
+    name: Fred
     rookie: true
   T03:
     name: Team 3
@@ -15,7 +15,7 @@ teams:
     name: Team 5
     rookie: true
   T06:
-    name: Team 6
+    name: egg.
     rookie: true
   T07:
     name: Team 7
