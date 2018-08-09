@@ -994,12 +994,12 @@
          x="25.08256"
          y="995.44867"
          id="tspan3807"
-         style="font-size:22.5px">    U - the robot picked up a token</tspan><tspan
+         style="font-size:22.5px">    U - the robot picked up a can (including the super can)</tspan><tspan
          sodipodi:role="line"
          x="25.08256"
          y="1023.5737"
          id="tspan3811"
-         style="font-size:22.5px">    D - the robot dropped a token</tspan></text>
+         style="font-size:22.5px">    D - the robot dropped a can (including the super can)</tspan></text>
     <g
        id="g4653"
        transform="translate(4,88)">
@@ -2060,7 +2060,7 @@
          x="602.49353"
          id="tspan3418"
          sodipodi:role="line"
-         style="line-height:150%">Holding super-can (at end of game): ▢</tspan><tspan
+         style="line-height:150%">Holding super can (at end of game): ▢</tspan><tspan
          y="838.30823"
          x="602.49353"
          sodipodi:role="line"
