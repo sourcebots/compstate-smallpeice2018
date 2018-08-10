@@ -1,0 +1,15 @@
+arena_id: main
+match_number: 27
+teams:
+  T07:
+    disqualified: false
+    events: CUCDUCDC
+    holding-super: false
+    present: true
+    zone: 1
+  T09:
+    disqualified: false
+    events: B
+    holding-super: false
+    present: true
+    zone: 0
