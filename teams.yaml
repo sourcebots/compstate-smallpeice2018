@@ -1,6 +1,6 @@
 teams:
   T01:
-    name: Team 1
+    name: Connection Refused
     rookie: true
   T02:
     name: Fred
