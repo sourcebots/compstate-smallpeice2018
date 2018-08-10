@@ -1,6 +1,6 @@
 teams:
   T01:
-    name: Team 1
+    name: Connection Refused
     rookie: true
   T02:
     name: Fred
@@ -9,10 +9,10 @@ teams:
     name: The Electromagnets
     rookie: true
   T04:
-    name: The Coopers
+    name: Archie
     rookie: true
   T05:
-    name: Team 5
+    name: Team Name
     rookie: true
   T06:
     name: egg.
@@ -27,5 +27,5 @@ teams:
     name: Rock It
     rookie: true
   T10:
-    name: Lepricorns
+    name: Leprechauns
     rookie: true
