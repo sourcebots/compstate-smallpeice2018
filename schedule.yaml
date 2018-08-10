@@ -26,8 +26,8 @@ delays: []
 #
 match_periods:
   league:
-    - start_time: 2018-08-10 10:40:00 +1
-      end_time: 2018-08-10 12:00:00 +1
+    - start_time: 2018-08-10 10:55:00 +1
+      end_time: 2018-08-10 12:15:00 +1
       max_end_time: 2018-08-10 12:25:00 +1
       description: League
 #
