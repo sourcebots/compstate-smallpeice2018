@@ -1,0 +1,15 @@
+arena_id: main
+match_number: 21
+teams:
+  T05:
+    disqualified: false
+    events: CUCB
+    holding-super: false
+    present: true
+    zone: 1
+  T06:
+    disqualified: false
+    events: C
+    holding-super: false
+    present: true
+    zone: 0
